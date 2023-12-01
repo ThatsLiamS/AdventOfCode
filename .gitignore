@@ -1,0 +1,10 @@
+# Program Files
+*.java
+*.js
+*.py
+
+*.txt
+*.json
+
+# Modules & Packages
+node_modules/

@@ -12,7 +12,7 @@ Here is a list of the years I have competed in and the stars I've earned:
 - [Day 4: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%204.md)
 
 ### 2023 => 0⭐
-- Day 1: ?  ?
+- [Day 1: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%201.md)
 
 Feel free to explore the solutions and share your thoughts. Happy coding and may the stars be with you!
 
