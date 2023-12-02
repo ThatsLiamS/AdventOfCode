@@ -49,8 +49,21 @@ Some of the pairs have noticed that one of their assignments fully contains the 
 
 In how many assignment pairs does one range fully contain the other?
 
-```python
-# Code to be Implemented Soon
+```javascript
+const lines = await importFromTextFile();
+let total = 0;
+
+for (let index = 0; index < lines.length; index++) {
+	const [lowerOne, upperOne] = lines[index][0].split('-').map(num => Number(num));
+	const [lowerTwo, upperTwo] = lines[index][1].split('-').map(num => Number(num));
+
+	if ((lowerOne >= lowerTwo && upperOne <= upperTwo) || (lowerTwo >= lowerOne && upperTwo <= upperOne)) {
+		total++;
+		continue;
+	};
+};
+
+console.log(total);
 ```
 
 ## Task Two
@@ -68,6 +81,21 @@ So, in this example, the number of overlapping assignment pairs is `4`.
 
 In how many assignment pairs do the ranges overlap?
 
-```python
-# Code to be Implemented Soon
+```javascript
+const lines = await importFromTextFile();
+let total = 0;
+
+for (let index = 0; index < lines.length; index++) {
+	const [lowerOne, upperOne] = lines[index][0].split('-').map(num => Number(num));
+	const [lowerTwo, upperTwo] = lines[index][1].split('-').map(num => Number(num));
+
+	for (let num = lowerOne; num <= upperOne; num++) {
+		if (lowerTwo <= num && num <= upperTwo) {
+			total++;
+			break;
+		};
+	};
+};
+
+console.log(total);
 ```

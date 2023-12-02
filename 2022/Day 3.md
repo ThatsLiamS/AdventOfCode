@@ -37,8 +37,27 @@ In the above example, the priority of the item type that appears in both compart
 
 Find the item type that appears in both compartments of each rucksack. What is the sum of the priorities of those item types?
 
-```python
-# Code to be Implemented Soon
+```javascript
+const lines = await importFromTextFile();
+const data = [];
+
+for (const line of lines) {
+	
+	const bagOne = line.slice(0, line.length / 2);
+	const bagTwo = line.slice(line.length / 2);
+
+	for (const char of bagOne) {
+		if (bagTwo.includes(char)){
+			data.push(char.toUpperCase() === char
+				? char.charCodeAt(0) - 64 + 26
+				: char.charCodeAt(0) - 96
+			);
+			break;
+		};
+	};
+};
+
+console.log(getSum(data));
 ```
 
 ## Task Two
@@ -73,6 +92,22 @@ Priorities for these items must still be found to organize the sticker attachmen
 
 Find the item type that corresponds to the badges of each three-Elf group. What is the sum of the priorities of those item types?
 
-```python
-# Code to be Implemented Soon
+```javascript
+const lines = await importFromTextFile();
+const data = [];
+
+let index = 0;
+while (index < lines.length) {
+
+	const char = Array.from(lines[index]).find(char =>
+		lines[index + 1].includes(char) && lines[index + 2].includes(char)
+	);
+	data.push(char.toUpperCase() === char
+		? char.charCodeAt(0) - 64 + 26
+		: char.charCodeAt(0) - 96
+	);
+	index += 3
+};
+
+console.log(getSum(data));
 ```
