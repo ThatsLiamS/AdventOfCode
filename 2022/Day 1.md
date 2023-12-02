@@ -43,8 +43,20 @@ In case the Elves get hungry and need extra snacks, they need to know which Elf 
 
 Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
 
-```python
-# Code to be Implemented Soon
+```javascript
+const lines = await importFromTextFile();
+const data = [0]; let elfNumber = 0;
+
+lines.forEach((line) => {
+	if (line === "") {
+		elfNumber++;
+		data.push(0);
+		return;
+	};
+  
+	data[elfNumber] += Number(line);
+});
+console.log ( mergeSort(data)[data.length - 1] );
 ```
 
 ## Task Two
@@ -57,6 +69,20 @@ In the example above, the top three Elves are the fourth Elf (with `24000` Calor
 
 Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
 
-```python
-# Code to be Implemented Soon
+```javascript
+const lines = await importFromTextFile();
+let data = [0]; let elfNumber = 0;
+
+lines.forEach((line) => {
+	if (line === "") {
+		elfNumber++;
+		data.push(0);
+		return;
+	};
+  
+	data[elfNumber] += Number(line);
+});
+
+data = mergeSort(data);
+console.log ( data[data.length - 1] + data[data.length - 2] + data[data.length - 3] );
 ```
