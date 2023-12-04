@@ -65,7 +65,7 @@ for (let index = 0; index < lines.length; index++) {
 				const newCol = j + dir.col;
 
 				if (isValidPosition(newRow, newCol, lines)) {
-					if (['*', '!', '@', '#', '$', '+', '=', '/', '%', '&', '-'].includes(lines[newRow][newCol])) {
+					if ((/\d/.test(lines[newRow][newCol])  == false && lines[newRow][newCol] !== ".")) {
 						symbols = true;
 					};
 				};
