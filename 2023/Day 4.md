@@ -45,7 +45,7 @@ let total = 0;
 for (let index = 0; index < lines.length; index++) {
 
 	const [partOne, partTwo] = lines[index].split('|');
-    const winningNumbers = partOne.split(' ')
+	const winningNumbers = partOne.split(' ')
 		.filter(val => partTwo.split(' ').includes(val))
 		.filter(val => val !== '');
 
