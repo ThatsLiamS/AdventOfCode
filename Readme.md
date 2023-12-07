@@ -14,13 +14,14 @@ Here is a list of the years I have competed in and the stars I've earned:
 - [Day 6: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%206.md)
 - [Day 8: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%208.md)
 
-### 2023 => 12⭐
+### 2023 => 14⭐
 - [Day 1: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%201.md)
 - [Day 2: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%202.md)
 - [Day 3: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%203.md)
 - [Day 4: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%204.md)
 - [Day 5: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%205.md)
 - [Day 6: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%206.md)
+- [Day 7: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%207.md)
 
 Feel free to explore the solutions and share your thoughts. Happy coding and may the stars be with you!
 
