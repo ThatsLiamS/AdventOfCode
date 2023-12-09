@@ -6,20 +6,23 @@
 - [Puzzle Input](https://adventofcode.com/2022/day/4/input)
 
 ```javascript
-const lines = await importFromTextFile();
-let total = 0;
+const input = await importFromTextFile();
+/* splits the input "1-2,8-9" into ["1-2", "8-9"] */
+const lines = input.map(value => value.split(','));
 
-for (let index = 0; index < lines.length; index++) {
-	const [lowerOne, upperOne] = lines[index][0].split('-').map(num => Number(num));
-	const [lowerTwo, upperTwo] = lines[index][1].split('-').map(num => Number(num));
+/* determines how many ranges completely overlaps */
+const completeOverlaps = lines.filter(line => {
+	/* splits range "1-2" into [1, 2] */
+	const [lowerOne, upperOne] = line[0].split('-').map(Number);
+	const [lowerTwo, upperTwo] = line[1].split('-').map(Number);
 
+	/* checks if a range completely fits within the other */
 	if ((lowerOne >= lowerTwo && upperOne <= upperTwo) || (lowerTwo >= lowerOne && upperTwo <= upperOne)) {
-		total++;
-		continue;
+		return true;
 	};
-};
+});
 
-console.log(total);
+console.log(completeOverlaps.length);
 ```
 
 ## Task Two
@@ -28,20 +31,24 @@ console.log(total);
 - [Puzzle Input](https://adventofcode.com/2022/day/4/input)
 
 ```javascript
-const lines = await importFromTextFile();
-let total = 0;
+const input = await importFromTextFile();
+/* splits the input "1-2,8-9" into ["1-2", "8-9"] */
+const lines = input.map(value => value.split(','));
 
-for (let index = 0; index < lines.length; index++) {
-	const [lowerOne, upperOne] = lines[index][0].split('-').map(num => Number(num));
-	const [lowerTwo, upperTwo] = lines[index][1].split('-').map(num => Number(num));
+/* determines how many ranges partially or completely overlaps */
+const partialOverlaps = lines.filter(line => {
+	/* splits range "1-2" into [1, 2] */
+	const [lowerOne, upperOne] = line[0].split('-').map(Number);
+	const [lowerTwo, upperTwo] = line[1].split('-').map(Number);
 
+	/* loops through all numbers within range one */
 	for (let num = lowerOne; num <= upperOne; num++) {
+		/* checks if the number fits within range two */
 		if (lowerTwo <= num && num <= upperTwo) {
-			total++;
-			break;
+			return true;
 		};
 	};
-};
+});
 
-console.log(total);
+console.log(partialOverlaps.length);
 ```

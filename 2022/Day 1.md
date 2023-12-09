@@ -6,19 +6,15 @@
 - [Puzzle Input](https://adventofcode.com/2022/day/1/input)
 
 ```javascript
-const lines = await importFromTextFile();
-const data = [0]; let elfNumber = 0;
-
-lines.forEach((line) => {
-	if (line === "") {
-		elfNumber++;
-		data.push(0);
-		return;
-	};
-  
-	data[elfNumber] += Number(line);
-});
-console.log ( mergeSort(data)[data.length - 1] );
+const input = await importFromTextFile();
+/* joins every line together in order to split by every blank line (representing a new elf) */
+const elves = input.join('\n').split('\n\n')
+	.map(elf => {
+		/* splits each number and adds them together */
+		return getSum(elf.split('\n').map(Number))
+	});
+/* sorts the numbers to identify the largest value */
+console.log( mergeSort(elves)[elves.length - 1] );
 ```
 
 ## Task Two
@@ -27,19 +23,16 @@ console.log ( mergeSort(data)[data.length - 1] );
 - [Puzzle Input](https://adventofcode.com/2022/day/1/input)
 
 ```javascript
-const lines = await importFromTextFile();
-let data = [0]; let elfNumber = 0;
+const input = await importFromTextFile();
+/* joins every line together in order to split by every blank line (representing a new elf) */
+const elves = input.join('\n').split('\n\n')
+	.map(elf => {
+		/* splits each number and adds them together */
+		return getSum(elf.split('\n').map(Number))
+	});
 
-lines.forEach((line) => {
-	if (line === "") {
-		elfNumber++;
-		data.push(0);
-		return;
-	};
-  
-	data[elfNumber] += Number(line);
-});
-
-data = mergeSort(data);
-console.log ( data[data.length - 1] + data[data.length - 2] + data[data.length - 3] );
+/* sorts the numbers, separates the last 3 elements, and adds them together */
+console.log (getSum(
+	mergeSort(elves).slice(elves.length - 3)
+));
 ```

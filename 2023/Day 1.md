@@ -6,20 +6,13 @@
 - [Puzzle Input](https://adventofcode.com/2023/day/1/input)
 
 ```javascript
-const inputData = await importFromTextFile();
-const data = [];
-
-for (let index = 0; index < inputData.length; index++) {
-	const numbers = [];
-	
-	for (let j = 0; j < inputData[index].length; j++) {
-		if (Number(inputData[index][j]) >= 0 && Number(inputData[index][j]) <= 9) {
-			numbers.push(inputData[index][j]);
-		};
-	};
-
-	data.push (Number ( numbers[0] + numbers[numbers.length - 1] ) );
-};
+const lines = await importFromTextFile();
+const data = lines.map(line => {
+	/* loops through every character, and discard any non-digits */
+	const numbers = line.split('').filter(digit => /[0-9]/.test(digit));
+	/* combines the first and last number into a two-digit number */
+	return (Number(numbers[0] + numbers[numbers.length - 1]));
+});
 
 console.log(getSum(data));
 ```
@@ -29,27 +22,33 @@ console.log(getSum(data));
 - [Task Description](https://adventofcode.com/2023/day/1#part2)
 - [Puzzle Input](https://adventofcode.com/2023/day/1/input)
 
-```python
-def solve(line):
-	number_mapping = { "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, }
-	ones, tens = -1, -1
+```javascript
+const lines = await importFromTextFile();
+const numbers = { 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9 };
 
-	for i in range(len(line)):
-		c = line[i]
+const data = lines.map(line => {
+	const numbersFound = [];
 
-		if ('0' <= c <= '9'):
-			ones = int(c)
-		else:
-			for word, value in number_mapping.items():
-				if (i + len(word) <= len(line)) and (line[i:i + len(word)] == word):
-					ones = value
-					break
+	/* loops through every character in the line */
+	for (let index = 0; index < line.length; index++) {
+		/* is the character a digit */
+		if (/[0-9]/.test(line[index])) numbersFound.push(Number(line[index]));
 
-		if ones != -1 and tens == -1:
-			tens = ones * 10
-	return tens + ones
+		/* loops through every number spelt out [one, two, ..., nine] */
+		for (const word of Object.keys(numbers)) {
+			/* is it possible for the word to fit within the remaining characters */
+			const validLength = word.length + index <= line.length;
 
-with open('input.txt', 'r') as file:
-	lines = file.readlines()
-print( sum(solve(line) for line in lines) )
+			/* splits the line based on the words length, and checks for equality */
+			if (validLength && (line.slice(index, index + word.length) == word)) {
+				numbersFound.push(numbers[word]);
+			};
+		};
+	};
+
+	/* combines the first and last number into a two-digit number */
+	return (numbersFound[0] * 10) + (numbersFound[numbersFound.length - 1]);
+});
+
+console.log(getSum(data));
 ```

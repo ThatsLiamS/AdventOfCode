@@ -6,22 +6,24 @@
 - [Puzzle Input](https://adventofcode.com/2023/day/4/input)
 
 ```javascript
-const lines = await importFromTextFile();
-let total = 0;
+const input = await importFromTextFile();
+/* splits the line, discarding the card ID */
+const lines = input.map(line => line.split(':')[1]);
 
-for (let index = 0; index < lines.length; index++) {
+const data = lines.map(line => {
+	const [partOne, partTwo] = line.split('|');
 
-	const [partOne, partTwo] = lines[index].split('|');
+	/* determine the numbers which appear in both lists */
 	const winningNumbers = partOne.split(' ')
 		.filter(val => partTwo.split(' ').includes(val))
 		.filter(val => val !== '');
 
-	if (winningNumbers.length == 0) continue;
+	/* for every winning number, the prize doubles [1, 2, 4, 8, ...] */
+	if (winningNumbers.length == 0) return 0;
+	return (2 ** (winningNumbers.length - 1));
+});
 
-	total += (2 ** (winningNumbers.length - 1));
-};
-
-console.log(total);
+console.log(getSum(data));
 ```
 
 # Task Two
@@ -30,24 +32,25 @@ console.log(total);
 - [Puzzle Input](https://adventofcode.com/2023/day/4/input)
 
 ```javascript
-const lines = await importFromTextFile();
-const cardsWon = [];
+const input = await importFromTextFile();
+/* splits the line, discarding the card ID */
+const lines = input.map(line => line.split(':')[1]);
+/* create an array where each element corresponds to the number of cards with that ID */
+const cardsWon = new Array(lines.length).fill(0);
 
 for (let index = 0; index < lines.length; index++) {
-
-	if (!cardsWon[index]) cardsWon[index] = 0;
+	/* by default, we have one of each card */
 	cardsWon[index] += 1;
 
 	const [partOne, partTwo] = lines[index].split('|');
+	/* determine the numbers which appear in both lists */
 	const winningNumbers = partOne.split(' ')
-		.filter(val => partTwo.split(' ').includes(val))
-		.filter(val => val !== '');
+		.filter(val => partTwo.split(' ').includes(val) && val !== '');
 
-	if (winningNumbers.length === 0) continue;
-
-	for (let x = 0; x < winningNumbers.length; x++) {
-		if (!cardsWon[index + 1 + x]) cardsWon[index + 1 + x] = 0;
-		cardsWon[index + 1 + x] += cardsWon[index];
+	/* generate new cards for each winning number */
+	for (let x = 1; x <= winningNumbers.length; x++) {
+		/* increase the number of the next cards by the number of the current card */
+		cardsWon[index + x] += cardsWon[index];
 	};
 };
 
