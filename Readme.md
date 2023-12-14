@@ -2,32 +2,11 @@
 
 Welcome to my Advent of Code repository! Advent of Code is an annual programming challenge where participants solve daily coding puzzles throughout the month of December. Each day brings a new problem that tests various programming and problem-solving skills.
 
-## Years and Stars
+## Years and Stars (40⭐)
 Here is a list of the years I have competed in and the stars I've earned:
 
-### 2022 => 14⭐
-- [Day 1: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%201.md)
-- [Day 2: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%202.md)
-- [Day 3: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%203.md)
-- [Day 4: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%204.md)
-- [Day 5: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%205.md)
-- [Day 6: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%206.md)
-- [Day 8: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/Day%208.md)
-
-### 2023 => 26⭐
-- [Day 1: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%201.md)
-- [Day 2: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%202.md)
-- [Day 3: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%203.md)
-- [Day 4: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%204.md)
-- [Day 5: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%205.md)
-- [Day 6: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%206.md)
-- [Day 7: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%207.md)
-- [Day 8: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%208.md)
-- [Day 9: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%209.md)
-- [Day 10: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%2010.md)
-- [Day 11: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%2011.md)
-- [Day 12: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%2012.md)
-- [Day 13: ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%2013.md)
+- [**2022**](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/2022%20README.md) **=> 14⭐**
+- [**2023**](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/2023%20README.md) **=> 26⭐ (AoC++)**
 
 Feel free to explore the solutions and share your thoughts. Happy coding and may the stars be with you!
 
