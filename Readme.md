@@ -2,11 +2,11 @@
 
 Welcome to my Advent of Code repository! Advent of Code is an annual programming challenge where participants solve daily coding puzzles throughout the month of December. Each day brings a new problem that tests various programming and problem-solving skills.
 
-## Years and Stars (42⭐)
+## Years and Stars (44⭐)
 Here is a list of the years I have competed in and the stars I've earned:
 
 - [**2022**](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2022/2022%20README.md) **=> 14⭐**
-- [**2023**](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/2023%20README.md) **=> 28⭐ (AoC++)**
+- [**2023**](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/2023%20README.md) **=> 30⭐ (AoC++)**
 
 Feel free to explore the solutions and share your thoughts. Happy coding and may the stars be with you!
 

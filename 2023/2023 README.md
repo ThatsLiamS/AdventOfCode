@@ -1,4 +1,4 @@
-# Advent of Code - Year 2023 - 28⭐
+# Advent of Code - Year 2023 - 30⭐
 
 This directory contains solutions to the Advent of Code puzzles for the year `2023`.
 
@@ -18,6 +18,7 @@ This directory contains solutions to the Advent of Code puzzles for the year `20
 12. [Hot Springs ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%2012.md)
 13. [Point of Incidence ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%2013.md)
 14. [Parabolic Reflector Dish ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%2014.md)
+15. [Lens Library ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2023/Day%2015.md)
 
 ## About Advent of Code
 
