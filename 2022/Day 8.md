@@ -10,22 +10,32 @@ const lines = await importFromTextFile();
 let total = 0;
 
 for (let row = 0; row < lines.length; row++) {
-	const verticalElements = Array.from({ length: lines[0].length }, (_, i) => lines.map(row => row[i]));
+	/* create an array with the same length as the first row */
+	/* populate array with the rows in column 'i' */
+	const verticalElements = Array.from({ length: lines[0].length }, (_, i) => lines.map(rows => rows[i]));
+
 	for (let column = 0; column < lines[row].length; column++) {
 
+		/* if the element is on the border, it can always be seen */
 		if (row === 0 || row === lines.length - 1 || column === 0 || column === lines[row].length - 1) { total++; continue; }
 
-		const neighbors = [
-			verticalElements[column].slice(0, row),
-			verticalElements[column].slice(row + 1),
-			lines[row].slice(0, column).split(''),
-			lines[row].slice(column + 1).split('')
-		].map(arr => mergeSort(arr));
+		/* splits rows, or columns based on index points provided */
+		const getVerticalElements = (array, start, end) => array.slice(start, end);
+		const getHorizontalElements = (array, start, end) => array.slice(start, end).split('');
 
-		const array = neighbors.filter(array => array[ array.length - 1] < Number(lines[row][column]));
+		/* calculate neighboring elements: [North, East, South, West] */
+		const neighbors = [
+			getVerticalElements(verticalElements[column], 0, row),
+			getHorizontalElements(lines[row], column + 1),
+			getVerticalElements(verticalElements[column], row + 1),
+			getHorizontalElements(lines[row], 0, column),
+		].map(array => mergeSort(array));
+
+		/* if the number is greater than the highest neighbor, then it can be seen */
+		const array = neighbors.filter(array => array[array.length - 1] < Number(lines[row][column]));
 		if (array.length > 0) total++;
 	};
-};  
+};
 
 console.log(total);
 ```
@@ -37,33 +47,46 @@ console.log(total);
 
 ```javascript
 const lines = await importFromTextFile();
-const directions = [ [-1, 0], [0, 1], [1, 0], [0, -1] ];
 let highestScore = 0;
 
 for (let row = 0; row < lines.length; row++) {
-	for (let column = 0; column < lines[0].length; column++) {
-		let score = 1;
+	/* create an array with the same length as the first row */
+	/* populate array with the rows in column 'i' */
+	const verticalElements = Array.from({ length: lines[0].length }, (_, i) => lines.map(rows => rows[i]));
 
-		for (const [dr, dc] of directions) {
-			let dist = 1;
-			let currentRow = row + dr;
-			let currentColumn = column + dc;
+	for (let column = 0; column < lines[row].length; column++) {
 
-			while (true) {
-				if (!(0 <= currentRow && currentRow < lines.length && 0 <= currentColumn && currentColumn < lines[0].length)) {
-					dist -= 1; break;
-				};
-				if (lines[currentRow][currentColumn] >= lines[row][column]) { break; }
+		/* splits rows, or columns based on index points provided */
+		const getVerticalElements = (array, start, end) => array.slice(start, end);
+		const getHorizontalElements = (array, start, end) => array.slice(start, end).split('');
 
-				dist += 1;
-				currentRow += dr;
-				currentColumn += dc;
+		/* calculate neighboring elements: [North, East, South, West] */
+		const neighbors = [
+			getVerticalElements(verticalElements[column], 0, row).reverse(),
+			getHorizontalElements(lines[row], column + 1),
+			getVerticalElements(verticalElements[column], row + 1),
+			getHorizontalElements(lines[row], 0, column).reverse(),
+		];
+
+		const currentHeight = Number(lines[row][column]);
+		let productScore = 1;
+
+		for (const array of neighbors) {
+			let localScore = 0;
+
+			for (const tree of array) {
+				/* if the tree is smaller then the currentHeight, it can be seen */
+				if (tree < currentHeight) localScore++;
+				/* trees taller then the current can be seen, however blocks all others behind */
+				if (tree >= currentHeight) { localScore++; break; };
 			};
-			score *= dist;
+			/* multiply the number of trees in each direction together */
+			productScore = productScore * localScore
 		};
-		highestScore = Math.max(highestScore, score);
+
+		/* selects the greater value, between the current highestScore and productScore */
+		highestScore = (highestScore > productScore) ? highestScore : productScore;
 	};
 };
-
 console.log(highestScore);
 ```

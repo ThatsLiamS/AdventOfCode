@@ -11,33 +11,38 @@ const data = [];
 const visitedPositions = new Set();
 
 const directions = [
-	{ row: -1, col: 0 }, // Above
-	{ row: 1, col: 0 },  // Below
-	{ row: 0, col: -1 }, // Left
-	{ row: 0, col: 1 },  // Right
-	{ row: -1, col: -1 },// Diagonal Up-Left
-	{ row: -1, col: 1 }, // Diagonal Up-Right
-	{ row: 1, col: -1 }, // Diagonal Down-Left
-	{ row: 1, col: 1 },  // Diagonal Down-Right
+	{ row: -1, col: 0 }, // North
+	{ row: 1, col: 0 },  // South
+	{ row: 0, col: -1 }, // West
+	{ row: 0, col: 1 },  // East
+	{ row: -1, col: -1 },// North West
+	{ row: -1, col: 1 }, // North East
+	{ row: 1, col: -1 }, // South West
+	{ row: 1, col: 1 },  // South East
 ];
 
+/* is the position on the board */
 const isValidPosition = (row, col, lines) => {
 	return row >= 0 && row < lines.length && col >= 0 && col < lines[row].length;
 };
 
+/* iterate over every element in the grid */
 for (let index = 0; index < lines.length; index++) {
 	for (let j = 0; j < lines[index].length; j++) {
 		const value = lines[index][j];
 
+		/* is it a number that we haven't visited before */
 		if (/^[0-9]$/.test(value) && !visitedPositions.has(`${index}-${j}`)) {
 			let symbols = false;;
 
+			/* check every adjacent cell */
 			for (const dir of directions) {
 				const newRow = index + dir.row;
 				const newCol = j + dir.col;
 
 				if (isValidPosition(newRow, newCol, lines)) {
-					if ((/\d/.test(lines[newRow][newCol])  == false && lines[newRow][newCol] !== ".")) {
+					/* is the cell a symbol */
+					if ((/\d/.test(lines[newRow][newCol]) == false && lines[newRow][newCol] !== ".")) {
 						symbols = true;
 					};
 				};
@@ -46,6 +51,7 @@ for (let index = 0; index < lines.length; index++) {
 			if (symbols == true) {
 				const numberDigits = [];
 	
+				/* identify all numbers to the left */
 				let k = j;
 				while (k >= 0 && /^[0-9]$/.test(lines[index][k])) {
 					numberDigits.unshift(lines[index][k]);
@@ -53,6 +59,7 @@ for (let index = 0; index < lines.length; index++) {
 					k--;
 				};
 
+				/* identify all the numbers to the right */
 				k = j + 1;
 				while (k < lines[index].length && /^[0-9]$/.test(lines[index][k])) {
 					numberDigits.push(lines[index][k]);
@@ -60,7 +67,8 @@ for (let index = 0; index < lines.length; index++) {
 					k++;
 				};
 
-				data.push(Number(numberDigits.join('')));
+				/* get the complete number */
+				data.push( Number(numberDigits.join('')) );
 			};
 		};
 	};
@@ -82,32 +90,39 @@ const foundSymbols = new Set();
 const visitedPositions = new Set();
 
 const directions = [
-	{ row: -1, col: 0 }, // Above
-	{ row: 1, col: 0 },  // Below
-	{ row: 0, col: -1 }, // Left
-	{ row: 0, col: 1 },  // Right
-	{ row: -1, col: -1 },// Diagonal Up-Left
-	{ row: -1, col: 1 }, // Diagonal Up-Right
-	{ row: 1, col: -1 }, // Diagonal Down-Left
-	{ row: 1, col: 1 },  // Diagonal Down-Right
+	{ row: -1, col: 0 }, // North
+	{ row: 1, col: 0 },  // South
+	{ row: 0, col: -1 }, // West
+	{ row: 0, col: 1 },  // East
+	{ row: -1, col: -1 },// North West
+	{ row: -1, col: 1 }, // North East
+	{ row: 1, col: -1 }, // South West
+	{ row: 1, col: 1 },  // South East
 ];
 
+/* is the position on the board */
+const isValidPosition = (row, col, lines) => {
+	return row >= 0 && row < lines.length && col >= 0 && col < lines[row].length;
+};
+
+/* iterate over every element in the grid */
 for (let index = 0; index < lines.length; index++) {
 	for (let j = 0; j < lines[index].length; j++) {
 		const value = lines[index][j];
 		let symX = 0; let symY = 0;
 
+		/* is it a number that we haven't visited before */
 		if (/^[0-9]$/.test(value) && !visitedPositions.has(`${index}-${j}`)) {
 			let symbol = false;
 
+			/* check every adjacent cell */
 			for (const dir of directions) {
 				const newRow = index + dir.row;
 				const newCol = j + dir.col;
 
-				if (newRow >= 0 && newRow < lines.length && newCol >= 0 && newCol < lines[newRow].length) {
-					const neighborSymbol = lines[newRow][newCol];
-
-					if ('*' == neighborSymbol) {
+				if (isValidPosition(newRow, newCol, lines)) {
+					/* is the cell an asterisk */
+					if ('*' == lines[newRow][newCol]) {
 						symbol = true
 						symX = newRow; symY = newCol;
 					};
@@ -117,6 +132,7 @@ for (let index = 0; index < lines.length; index++) {
 			if (symbol == true) {
 				const numberDigits = [];
 
+				/* identify all numbers to the left */
 				let k = j;
 				while (k >= 0 && /^[0-9]$/.test(lines[index][k])) {
 					numberDigits.unshift(lines[index][k]);
@@ -124,6 +140,7 @@ for (let index = 0; index < lines.length; index++) {
 					k--;
 				};
 
+				/* identify all the numbers to the right */
 				k = j + 1;
 				while (k < lines[index].length && /^[0-9]$/.test(lines[index][k])) {
 					numberDigits.push(lines[index][k]);
@@ -133,13 +150,16 @@ for (let index = 0; index < lines.length; index++) {
 
 				const number = numberDigits.join('');
 
+				/* have we already seen this symbol */
 				let foundValue;
 				foundSymbols.forEach(symbol => {
 					const [x, y, value] = symbol.split('--');
+					/* have we already stored this symbol */
 					if (x === String(symX) && y === String(symY)) foundValue = value;
 				});
 
 				if (foundValue) {
+					/* if we've seen the symbol twice now */
 					total += Number(foundValue) * Number(number);
 				} else {
 					foundSymbols.add(`${symX}--${symY}--${number}`);

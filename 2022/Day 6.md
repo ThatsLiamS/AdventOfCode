@@ -7,21 +7,26 @@
 
 ```javascript
 const [line] = await importFromTextFile();
-const word = [];
-let result = 0;
 
-for (let index = 0; index < line.length; index++) {
-	word.length === 4 
-		? (word.shift(),  word.push(line[index]))
-		: word.push(line[index]);
+const getMarker = (length) => {
+	const word = [];
 
-	if (word.length === 4 && new Set(word).size === 4) {
-		result = index + 1;
-		break;
+	/* iterate through every character */
+	for (let index = 0; index < line.length; index++) {
+
+		/* does the word already meet the length requirements */
+		/* if so, remove the first element */
+		if (word.length === length) word.shift();
+
+		/* add the next character to the word */
+		word.push(line[index]);
+
+		/* if all elements are unique, return the position */
+		if (new Set(word).size === length) { return index + 1; };
 	};
 };
 
-console.log(result);
+console.log(getMarker(4));
 ```
 
 ## Task Two
@@ -31,19 +36,24 @@ console.log(result);
 
 ```javascript
 const [line] = await importFromTextFile();
-const word = [];
-let result = 0;
 
-for (let index = 0; index < line.length; index++) {
-	word.length === 14 
-		? (word.shift(),  word.push(line[index]))
-		: word.push(line[index]);
+const getMarker = (length) => {
+	const word = [];
 
-	if (word.length === 14 && new Set(word).size === 14) {
-		result = index + 1;
-		break;
+	/* iterate through every character */
+	for (let index = 0; index < line.length; index++) {
+
+		/* does the word already meet the length requirements */
+		/* if so, remove the first element */
+		if (word.length === length) word.shift();
+
+		/* add the next character to the word */
+		word.push(line[index]);
+
+		/* if all elements are unique, return the position */
+		if (new Set(word).size === length) { return index + 1; };
 	};
 };
 
-console.log(result);
+console.log(getMarker(14));
 ```

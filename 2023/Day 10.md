@@ -6,8 +6,7 @@
 - [Puzzle Input](https://adventofcode.com/2023/day/10/input)
 
 ```javascript
-const input = await importFromTextFile();
-const lines = input.map(line => line);
+const lines = await importFromTextFile();
 
 /* locates the starting position */
 const startPos = [];
@@ -68,8 +67,7 @@ console.log(length / 2);
 - [Puzzle Input](https://adventofcode.com/2023/day/10/input)
 
 ```javascript
-const input = await importFromTextFile();
-const lines = input.map(line => line);
+const lines = await importFromTextFile();
 
 /* locates the starting position */
 const startPos = [];
@@ -89,11 +87,11 @@ const potentialPaths = ['-7J', '|LJ', '-FL', '|F7'];
 const validDirections = [];
 for(let index = 0; index < 4; index++) {
 	pos = directions[index]
-    newX = startPos[0] + pos[0]
-    newY = startPos[1] + pos[1]
+	newX = startPos[0] + pos[0]
+	newY = startPos[1] + pos[1]
 
-    if ((0 <= newY && newY < lines.length) && (0 <= newY && newY < lines[index].length) && (potentialPaths[index].includes(lines[newX][newY]))) {
-        validDirections.push(index);
+	if ((0 <= newY && newY < lines.length) && (0 <= newY && newY < lines[index].length) && (potentialPaths[index].includes(lines[newX][newY]))) {
+		validDirections.push(index);
 	};
 };
 const isValid = validDirections.filter(val => val == 3).length > 0;
@@ -122,9 +120,9 @@ while (currentX != startPos[0] || currentY != startPos[1]) {
 	/* mark off every visited position */
 	visitedPos[currentX][currentY] = 1;
 
-    currentDirection = transform[`${currentDirection}${lines[currentX][currentY]}`];
-    currentX += directions[currentDirection][0];
-    currentY += directions[currentDirection][1];
+	currentDirection = transform[`${currentDirection}${lines[currentX][currentY]}`];
+	currentX += directions[currentDirection][0];
+	currentY += directions[currentDirection][1];
 };
 
 /* determine the enclosed area */
