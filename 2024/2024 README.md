@@ -1,4 +1,4 @@
-# Advent of Code - Year 2024 - 4⭐
+# Advent of Code - Year 2024 - 6⭐
 
 This directory contains solutions to the Advent of Code puzzles for the year `2024`.
 
@@ -6,6 +6,7 @@ This directory contains solutions to the Advent of Code puzzles for the year `20
 
 1. [Historian Hysteria ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2024/Day%201.md)
 2. [Red-Nosed Reports ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2024/Day%202.md)
+3. [Mull It Over ⭐⭐](https://github.com/ThatsLiamS/AdventOfCode/blob/main/2024/Day%203.md)
 
 
 ## About Advent of Code
